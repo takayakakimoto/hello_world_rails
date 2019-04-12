@@ -1,0 +1,8 @@
+<h1>Users</h1>
+<% @users.each do |user| %>
+  <p>
+  <div>アカウント名: <%= user.account %></div>
+  <div>ユーザー名: <%= user.name %></div>
+  <div>メールアドレス名: <%= user.email %></div>
+  </p>
+  <% end %>
