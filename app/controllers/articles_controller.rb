@@ -10,7 +10,6 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @article = Article.find(params[:id])
   end
 
   # POST /articles
@@ -28,11 +27,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
-    if @article.update(article_params)
-      render :show, status: :ok, location: @article
-    else
-      render json: @article.errors, status: :unprocessable_entity
-    end
+    @article.update!(article_params)
   end
 
   # DELETE /articles/1
