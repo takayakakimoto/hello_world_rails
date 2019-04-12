@@ -22,11 +22,17 @@ class ArticlesController < ApplicationController
     else
       render json: @article.errors, status: :unprocessable_entity
     end
+    @article = Article.create!(article_params)
   end
 
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    if @article.update(article_params)
+      render :show, status: :ok, location: @article
+    else
+      render json: @article.errors, status: :unprocessable_entity
+    end
     @article.update!(article_params)
   end
 
@@ -34,6 +40,7 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1.json
   def destroy
     @article.destroy
+    @article.destroy!
   end
 
   private
